@@ -1,9 +1,10 @@
 import './App.css';
-
+import Sidebar from "./components/Sidebar"
+import Home from "./components/Homepage"
 function App() {
   return (
     <div>
-      <h1>Wubaluba Dub Dub</h1>
+      <Sidebar/>
     </div>
   );
 }

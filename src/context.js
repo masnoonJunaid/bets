@@ -20,4 +20,4 @@ class BetProvider extends React.Component {
 }
 
 const BetConsumer = BetContext.Consumer;
-export {BetProvider,BetConsumer}
+export  {BetProvider,BetConsumer}
