@@ -6,13 +6,31 @@ const BetContext = React.createContext()
 class BetProvider extends React.Component {
 
   state = {
-    bets:[],
+    users:[],
+    isLoaded:false
   }
+
+  componentDidMount(){
+    fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/bets7747a43.json')
+    .then(res => res.json())
+    .then(data=> {
+      this.setState({
+        users:data,
+        isLoaded:true
+      })
+    })
+  }
+
 
   render(){
 
     return(
-      <BetContext.Provider>
+      <BetContext.Provider
+        value =
+        {{
+          ...this.state
+        }}
+        >
         {this.props.children}
       </BetContext.Provider>
     )

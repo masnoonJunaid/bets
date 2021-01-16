@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import "../App.css"
 import Card from './TableCard'
+import {BetConsumer} from '../context'
 
 function Home(){
   return (
@@ -10,6 +11,16 @@ function Home(){
       <input className="search-input" type="text" placeholder="Search Players"/>
       <hr className="line"/>
       <div>
+      <BetConsumer>
+        {value =>  {
+        return  value.users.map(bets => {
+            return <Card
+            key={bets.Name}
+            betData = {bets}  
+            />
+          })
+        }}
+      </BetConsumer>
         <Card/>
       </div>
     </HomeStyle>
