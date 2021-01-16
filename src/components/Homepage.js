@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import "../App.css"
+import Card from './TableCard'
 
 function Home(){
   return (
@@ -8,7 +9,9 @@ function Home(){
       <h1>Select Playing 9</h1>
       <input className="search-input" type="text" placeholder="Search Players"/>
       <hr className="line"/>
-
+      <div>
+        <Card/>
+      </div>
     </HomeStyle>
   )
 }
