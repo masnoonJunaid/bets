@@ -1,36 +1,52 @@
 import React from 'react'
 import styled from 'styled-components'
-function Card() {
-  return (
-    <TableStyle>
-      <tr>
-        <th>SELECT</th>
-        <th><b>PLAYER NAME</b></th>
-        <th>LEVEL</th>
-        <th>AVATAR</th>
-        <th><b>BET</b></th>
-        <th><b>WINS</b></th>
-        <th>LOST</th>
-        <th><b>PRICE</b></th>
-      </tr>
-      <tr>
-        <td><input type="checkbox"/></td>
-        <td>Nisha Patahai</td>
-        <td>2</td>
-        <td>Image</td>
-        <td>5</td>
-        <td>20</td>
-        <td>3</td>
-        <td>500</td>
-      </tr>
-    </TableStyle>
-  )
+import {BetConsumer} from '../context'
+function  Card (){
+    return (
+      <TableStyle>
+        <tr className="table-head">
+          <th>SELECT</th>
+          <th>PLAYER NAME</th>
+          <th>LEVEL</th>
+          <th>AVATAR</th>
+          <th>BET</th>
+          <th>WINS</th>
+          <th>LOST</th>
+          <th>PRICE</th>
+        </tr>
+        <BetConsumer>
+          {value =>  {
+            return  value.users.map(bets => {
+              return <tr key={bets.Name} bets={bets}>
+                      <td><input type="checkbox"/></td>
+                      <td>{bets.Name}</td>
+                      <td>0</td>
+                      <td><img className="avatar-img" alt="" src={bets["Profile Image"]}/></td>
+                      <td>{bets.Bet}</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>{bets.Price}</td>
+                    </tr>
+            })
+          }}
+        </BetConsumer>
+      </TableStyle>
+    )
 }
 
 const TableStyle = styled.table`
+*{
+  width:100%;
+}
+.avatar-img{
+  width:22px;
+  height:22px;
+}
 
-tr{
-  margin:5%;
+td,th{
+  text-align:left;
+  padding:16px;
+  width:100%;
 }
 
 `

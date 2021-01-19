@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 
 
 const BetContext = React.createContext()
@@ -7,8 +7,12 @@ class BetProvider extends React.Component {
 
   state = {
     users:[],
-    isLoaded:false
+    selected:[],
+
   }
+
+
+
 
   componentDidMount(){
     fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/bets7747a43.json')
@@ -16,18 +20,16 @@ class BetProvider extends React.Component {
     .then(data=> {
       this.setState({
         users:data,
-        isLoaded:true
       })
     })
   }
 
 
+
   render(){
 
     return(
-      <BetContext.Provider
-        value =
-        {{
+      <BetContext.Provider value = {{
           ...this.state
         }}
         >

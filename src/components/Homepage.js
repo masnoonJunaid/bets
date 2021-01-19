@@ -1,33 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
 import "../App.css"
-import Card from './TableCard'
 import {BetConsumer} from '../context'
+import Card from "./TableCard"
 
 function Home(){
-  return (
-    <HomeStyle className="home">
-      <h1>Select Playing 9</h1>
-      <input className="search-input" type="text" placeholder="Search Players"/>
-      <hr className="line"/>
-      <div>
-      <BetConsumer>
-        {value =>  {
-        return  value.users.map(bets => {
-            return <Card
-            key={bets.Name}
-            betData = {bets}  
-            />
-          })
-        }}
-      </BetConsumer>
+    return (
+      <HomeStyle className="home">
+        <header className="header">
+          <h1>Select Playing 9</h1>
+          <input className="search-input" type="text" placeholder="Search Players"/>
+          <hr className="line"/>
+        </header>
         <Card/>
-      </div>
-    </HomeStyle>
-  )
-}
+        </HomeStyle>
+    )
+  }
+
+
+
 
 const HomeStyle = styled.div`
+*{
+  width:75%;
+}
 
 h1{
   color:#2510D7;
@@ -46,11 +42,16 @@ h1{
   width:40%;
   margin-left:10%;
 }
-
+.header{
+  background-color:ghostwhite;
+  width:100%;
+}
 
 .search-input:focus{
-  border:none;
+  border: solid #FFFFFF;
 }
+
+
 `
 
 export default Home
