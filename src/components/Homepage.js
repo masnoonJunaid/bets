@@ -43,7 +43,6 @@ h1{
   margin-left:10%;
 }
 .header{
-  background-color:ghostwhite;
   width:100%;
 }
 

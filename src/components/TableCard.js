@@ -44,9 +44,11 @@ const TableStyle = styled.table`
 }
 
 td,th{
-  text-align:left;
-  padding:16px;
-  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  padding:2%;
+  width:100vw;
 }
 
 `
