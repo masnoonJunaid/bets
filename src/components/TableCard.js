@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {BetConsumer} from '../context'
+import escapeRegExp from 'escape-string-regexp'
 function  Card (){
     return (
       <TableStyle>
@@ -16,7 +17,15 @@ function  Card (){
         </tr>
         <BetConsumer>
           {value =>  {
-            return  value.users.map(bets => {
+            let showPlayer;
+            if(value.query){
+              const match = new RegExp(escapeRegExp(value.query),'i')
+              showPlayer = value.users.filter((user) =>match.test(user.Name))
+            } else {
+              showPlayer = value.users
+            }
+
+            return  showPlayer.map(bets => {
               return <tr key={bets.Name} bets={bets}>
                       <td><input type="checkbox"/></td>
                       <td>{bets.Name}</td>

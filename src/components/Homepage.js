@@ -9,7 +9,16 @@ function Home(){
       <HomeStyle className="home">
         <header className="header">
           <h1>Select Playing 9</h1>
-          <input className="search-input" type="text" placeholder="Search Players"/>
+          <BetConsumer>
+            {value => {
+              return  <input
+                className="search-input"
+                type="text"
+                placeholder="Search Players"
+                onChange = {event => {value.updateText(event.target.value)}}
+                />
+            }}
+          </BetConsumer>
           <hr className="line"/>
         </header>
         <Card/>
@@ -47,7 +56,7 @@ h1{
 }
 
 .search-input:focus{
-  border: solid #FFFFFF;
+  focus:none;
 }
 
 

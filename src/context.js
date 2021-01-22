@@ -8,6 +8,7 @@ class BetProvider extends React.Component {
   state = {
     users:[],
     selected:[],
+    query:""
 
   }
 
@@ -24,13 +25,19 @@ class BetProvider extends React.Component {
     })
   }
 
+  updateText = (query) =>{
+    this.setState({query:query.trim()})
+    console.log(`I am working ${this.state.query}`)
+  }
+
 
 
   render(){
 
     return(
       <BetContext.Provider value = {{
-          ...this.state
+          ...this.state,
+          updateText:this.updateText
         }}
         >
         {this.props.children}
